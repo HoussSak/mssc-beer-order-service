@@ -44,6 +44,7 @@ public class TastingRoomService {
 
         if (customerList.size() == 1){ //should be just one
             doPlaceOrder(customerList.get(0));
+            System.out.println("je suis la@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         } else {
             log.error("Too many or too few tasting room customers found");
         }
@@ -53,6 +54,7 @@ public class TastingRoomService {
         String beerToOrder = getRandomBeerUpc();
 
         BeerOrderLineDto beerOrderLine = BeerOrderLineDto.builder()
+                .beerId(BeerOrderBootStrap.BEER_1_UUID)
                 .upc(beerToOrder)
                 .orderQuantity(new Random().nextInt(6)) //todo externalize value to property
                 .build();
@@ -65,6 +67,8 @@ public class TastingRoomService {
                 .customerRef(UUID.randomUUID().toString())
                 .beerOrderLines(beerOrderLineSet)
                 .build();
+
+
 
         BeerOrderDto savedOrder = beerOrderService.placeOrder(customer.getId(), beerOrder);
 
