@@ -47,7 +47,7 @@ public class Customer extends BaseEntity {
 
     private String customerName;
 
-    @Column(length = 36, columnDefinition = "varchar")
+
     private UUID apiKey;
 
     @OneToMany(mappedBy = "customer")
